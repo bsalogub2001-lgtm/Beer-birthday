@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>З Днем Народження! | Листівка від Пана Богдана</title>
+  
+  <!-- Cyrillic-ready fonts: Oswald & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,700&family=Oswald:wght@500;700&family=Russo+One&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Setup for Telegram / iOS Safari */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --amber-gold: #f59e0b;
+      --amber-light: #fbbf24;
+      --amber-dark: #b45309;
+      --beer-dark: #92400e;
+      --bg-dark: #120c08;
+      --wood-dark: #26160c;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(#2c180d 1px, transparent 1px), radial-gradient(#1e1109 1px, #0c0805 100%);
+      background-size: 24px 24px, 100% 100%;
+      color: #fef3c7;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 12px 14px 24px;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .font-title {
+      font-family: 'Russo One', 'Oswald', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .font-bar {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Top Navigation / Status Header */
+    .top-bar {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(30, 20, 14, 0.95);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 8px 12px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title {
+      font-family: 'Russo One', sans-serif;
+      font-size: 13px;
+      color: #fbbf24;
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      color: rgba(254, 243, 199, 0.6);
+      font-weight: 600;
+    }
+
+    /* Flip Button */
+    .btn-flip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #d97706, #b45309);
+      color: #fff;
+      border: 1px solid rgba(255, 230, 150, 0.3);
+      padding: 7px 12px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-flip:active {
+      transform: scale(0.96);
+      background: #b45309;
+    }
+
+    /* Postcard Frame Container */
+    .postcard-container {
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      perspective: 1200px;
+      -webkit-perspective: 1200px;
+      margin: auto 0;
+    }
+
+    .card-flipper {
+      position: relative;
+      width: 100%;
+      min-height: 520px;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+    }
+
+    .card-flipper.is-flipped {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+
+    /* Faces */
+    .card-face {
+      width: 100%;
+      min-height: 520px;
+      border-radius: 20px;
+      padding: 16px 14px 14px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 158, 11, 0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Front Side */
+    .face-front {
+      background: radial-gradient(circle at 50% 25%, #351c0f 0%, #170d07 100%);
+      border: 3px solid #5a341b;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    /* Back Side */
+    .face-back {
+      background: #e8dcc4;
+      background-image: radial-gradient(#d3c5a6 1px, transparent 1px), linear-gradient(135deg, #f2e7d3 0%, #ded0b4 100%);
+      background-size: 18px 18px, 100% 100%;
+      border: 3px solid #6b4c33;
+      color: #26160c;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Header styling */
+    .hero-header {
+      text-align: center;
+      border-bottom: 1px dashed rgba(245, 158, 11, 0.35);
+      padding-bottom: 8px;
+    }
+
+    .badge-ribbon {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fcd34d;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 4px;
+    }
+
+    .main-title {
+      font-size: 21px;
+      line-height: 1.15;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, #ffd700 0%, #f59e0b 60%, #fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-title {
+      font-size: 11px;
+      color: rgba(254, 243, 199, 0.75);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* Interactive Brewery Arena */
+    .brew-arena {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 6px 0;
+      flex: 1;
+    }
+
+    /* Tap Machine */
+    .tap-rig {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .tap-mount {
+      width: 76px;
+      height: 18px;
+      background: linear-gradient(90deg, #92400e, #fbbf24, #92400e);
+      border-radius: 4px 4px 0 0;
+      border-top: 1px solid #fef08a;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .tap-handle {
+      width: 26px;
+      height: 48px;
+      background: linear-gradient(180deg, #27272a, #18181b 50%, #451a03 100%);
+      border: 1px solid rgba(245, 158, 11, 0.7);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fbbf24;
+      font-size: 8px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.6);
+      transform-origin: top center;
+      transition: transform 0.15s ease;
+      touch-action: none;
+    }
+
+    .tap-handle.is-pulled {
+      transform: rotate(25deg) scale(0.95);
+    }
+
+    .tap-shaft {
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(90deg, #d97706, #fef08a, #b45309);
+    }
+
+    .tap-nozzle {
+      width: 16px;
+      height: 12px;
+      background: linear-gradient(180deg, #f59e0b, #78350f);
+      border-radius: 0 0 6px 6px;
+      position: relative;
+    }
+
+    .beer-stream {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 45px;
+      background: linear-gradient(180deg, #fef08a, #f59e0b 60%, #d97706);
+      border-radius: 0 0 4px 4px;
+      opacity: 0;
+      transition: opacity 0.1s ease;
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    /* The Mug Stage */
+    .mug-stage {
+      position: relative;
+      width: 220px;
+      height: 190px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .mug-body-wrap {
+      position: relative;
+      width: 125px;
+      height: 165px;
+      transition: transform 0.2s ease;
+      z-index: 5;
+    }
+
+    /* Mug Handle */
+    .mug-handle {
+      position: absolute;
+      left: -22px;
+      top: 32px;
+      width: 32px;
+      height: 95px;
+      border: 8px solid rgba(255, 255, 255, 0.35);
+      border-right: none;
+      border-radius: 20px 0 0 24px;
+      box-shadow: -2px 4px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Glass Container */
+    .mug-glass {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 0 0 20px 20px;
+      border: 4px solid rgba(255, 255, 255, 0.45);
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.1) 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7), inset 0 0 15px rgba(255,255,255,0.1);
+    }
+
+    /* Glass Ribs / Reflections */
+    .glass-facets {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-evenly;
+      pointer-events: none;
+      opacity: 0.25;
+      z-index: 7;
+    }
+
+    .facet-line {
+      width: 3px;
+      height: 100%;
+      background: #ffffff;
+    }
+
+    .glass-shine {
+      position: absolute;
+      top: 10px;
+      left: 8px;
+      width: 8px;
+      height: 80%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.05));
+      border-radius: 4px;
+      transform: skewX(-4deg);
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    /* Liquid & Foam Stack */
+    .foam-layer {
+      width: 100%;
+      height: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #fffbeb 60%, #fef08a 100%);
+      border-radius: 12px 12px 4px 4px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 0 4px;
+      z-index: 6;
+      flex-shrink: 0;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: height 0.25s ease;
+    }
+
+    .foam-blob {
+      width: 14px;
+      height: 12px;
+      background: #ffffff;
+      border-radius: 50%;
+      margin-top: -6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .beer-liquid {
+      width: 100%;
+      height: 48%;
+      background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 35%, #d97706 70%, #92400e 100%);
+      position: relative;
+      transition: height 0.2s ease-out;
+    }
+
+    #bubble-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* Second Mug for Clinking (Toast) */
+    .toast-mug-wrap {
+      position: absolute;
+      right: -130px;
+      bottom: 0;
+      width: 125px;
+      height: 165px;
+      opacity: 0;
+      pointer-events: none;
+      transform-origin: bottom right;
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.3, 1);
+      z-index: 9;
+    }
+
+    .toast-mug-wrap .toast-handle {
+      position: absolute;
+      right: -22px;
+      top: 32px;
+      width: 32px;
+      height: 95px;
+      border: 8px solid rgba(255, 255, 255, 0.35);
+      border-left: none;
+      border-radius: 0 20px 24px 0;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    }
+
+    #splash-canvas {
+      position: absolute;
+      inset: -20px;
+      width: 260px;
+      height: 230px;
+      pointer-events: none;
+      z-index: 12;
+    }
+
+    /* Buttons Row */
+    .action-controls {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .btn-act {
+      flex: 1;
+      padding: 10px 6px;
+      border-radius: 12px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+      transition: transform 0.1s ease, filter 0.1s ease;
+      touch-action: manipulation;
+    }
+
+    .btn-act:active {
+      transform: scale(0.95);
+    }
+
+    .btn-pour {
+      background: linear-gradient(135deg, #d97706, #b45309);
+      color: #fff;
+    }
+
+    .btn-cheers {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #1c1007;
+      font-weight: 800;
+    }
+
+    .btn-chug {
+      background: #27272a;
+      color: #fef08a;
+      border-color: #52525b;
+      max-width: 90px;
+    }
+
+    /* Perk Box */
+    .perk-box {
+      background: rgba(18, 12, 8, 0.85);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 12px;
+      padding: 8px 10px;
+      margin-top: 8px;
+    }
+
+    .perk-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .perk-tag {
+      font-size: 11px;
+      font-family: 'Oswald', sans-serif;
+      color: #fcd34d;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-perk-spin {
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: #fbbf24;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .perk-text {
+      font-size: 11px;
+      color: #fef3c7;
+      line-height: 1.35;
+      font-style: italic;
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ==================================
+       BACK OF POSTCARD STYLES
+       ================================== */
+    .back-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid rgba(75, 45, 23, 0.25);
+      padding-bottom: 8px;
+    }
+
+    .back-title {
+      font-family: 'Russo One', sans-serif;
+      font-size: 17px;
+      color: #3e2211;
+      line-height: 1.1;
+    }
+
+    .back-sub {
+      font-size: 9px;
+      color: #785338;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .postage-stamp {
+      width: 52px;
+      height: 64px;
+      background: #fbf5e6;
+      border: 2px dashed #991b1b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3px;
+      box-shadow: 1px 2px 5px rgba(0,0,0,0.15);
+      transform: rotate(2deg);
+    }
+
+    .stamp-label {
+      font-size: 7px;
+      font-weight: 800;
+      color: #991b1b;
+      text-transform: uppercase;
+    }
+
+    .back-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 8px 0;
+      flex: 1;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      color: #5c3b24;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    .message-area {
+      width: 100%;
+      height: 85px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid #b89c7d;
+      border-radius: 8px;
+      padding: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #26160c;
+      resize: none;
+      outline: none;
+    }
+
+    .message-area:focus {
+      border-color: #78350f;
+      background: #ffffff;
+    }
+
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag-btn {
+      background: rgba(120, 83, 56, 0.15);
+      border: 1px solid rgba(120, 83, 56, 0.35);
+      color: #3e2211;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .tag-btn:active {
+      background: rgba(120, 83, 56, 0.3);
+    }
+
+    .names-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .name-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.65);
+      border: none;
+      border-bottom: 2px solid #78350f;
+      border-radius: 4px 4px 0 0;
+      padding: 6px 8px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #26160c;
+      text-transform: uppercase;
+      outline: none;
+    }
+
+    .back-footer {
+      border-top: 2px solid rgba(75, 45, 23, 0.25);
+      padding-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-back-turn {
+      background: #3e2211;
+      color: #fef3c7;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(70px);
+      background: rgba(18, 12, 8, 0.96);
+      border: 1px solid #f59e0b;
+      color: #fef08a;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      pointer-events: none;
+      z-index: 100;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .toast-popup.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="top-bar">
+    <div class="brand-box">
+      <span style="font-size: 20px;">🍺</span>
+      <div>
+        <div class="brand-title">БРАТИ & ПИВО <span style="font-size: 9px; opacity: 0.8;">LTD</span></div>
+        <div class="brand-sub">ДЕНЬ НАРОДЖЕННЯ // VIP</div>
+      </div>
+    </div>
+
+    <!-- Explicitly sized SVG prevents Telegram blowout -->
+    <button id="toggle-flip-btn" class="btn-flip" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+      </svg>
+      <span id="flip-btn-text">ЗВОРОТНИЙ БІК</span>
+    </button>
+  </header>
+
+  <!-- 3D Postcard Wrapper -->
+  <main class="postcard-container">
+    <div id="card-flipper" class="card-flipper">
+      
+      <!-- ==============================================
+           FRONT FACE: INTERACTIVE DRAFT BEER BAR
+           ============================================== -->
+      <section class="card-face face-front">
+        
+        <!-- Header -->
+        <div class="hero-header">
+          <div class="badge-ribbon">★ ЧОЛОВІЧИЙ ДЕНЬ НАРОДЖЕННЯ ★</div>
+          <h1 class="main-title font-title">
+            З ДНЕМ НАРОДЖЕННЯ, <span class="gold-text" id="recipient-title-display">БРАТУХА</span>!
+          </h1>
+          <p class="sub-title">Нехай день буде епічним, м'ясо соковитим, а пиво — крижаним.</p>
+        </div>
+
+        <!-- Center Stage: Beer Tap & Mug -->
+        <div class="brew-arena">
+          
+          <!-- Tap Assembly -->
+          <div class="tap-rig">
+            <div class="tap-mount"></div>
+            <div id="tap-handle" class="tap-handle" title="Затисни, щоб налити!">
+              <span>ТЯГНИ</span>
+            </div>
+            <div class="tap-shaft"></div>
+            <div class="tap-nozzle">
+              <div id="beer-stream" class="beer-stream"></div>
+            </div>
+          </div>
+
+          <!-- Beer Mug Interactive Arena -->
+          <div class="mug-stage">
+            
+            <!-- Left Mug (Main) -->
+            <div id="main-mug" class="mug-body-wrap">
+              <div class="mug-handle"></div>
+              
+              <div class="mug-glass">
+                <div class="glass-facets">
+                  <div class="facet-line"></div>
+                  <div class="facet-line"></div>
+                  <div class="facet-line"></div>
+                </div>
+                <div class="glass-shine"></div>
+
+                <!-- Creamy Foam Top -->
+                <div id="foam-head" class="foam-layer">
+                  <div class="foam-blob"></div>
+                  <div class="foam-blob" style="width: 20px; height: 16px; margin-top: -8px;"></div>
+                  <div class="foam-blob"></div>
+                  <div class="foam-blob" style="width: 16px; height: 13px; margin-top: -7px;"></div>
+                </div>
+
+                <!-- Golden Liquid -->
+                <div id="beer-liquid" class="beer-liquid">
+                  <canvas id="bubble-canvas"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Mug for Clinking -->
+            <div id="toast-mug" class="toast-mug-wrap">
+              <div class="toast-handle"></div>
+              <div class="mug-glass" style="background: rgba(255,255,255,0.08);">
+                <div class="glass-facets">
+                  <div class="facet-line"></div>
+                  <div class="facet-line"></div>
+                  <div class="facet-line"></div>
+                </div>
+                <div class="foam-layer">
+                  <div class="foam-blob"></div>
+                  <div class="foam-blob" style="width: 20px; height: 16px; margin-top: -8px;"></div>
+                  <div class="foam-blob"></div>
+                </div>
+                <div class="beer-liquid" style="height: 75%;"></div>
+              </div>
+            </div>
+
+            <!-- Splash droplets canvas -->
+            <canvas id="splash-canvas"></canvas>
+          </div>
+
+          <!-- Controls -->
+          <div class="action-controls">
+            <button id="btn-pour" class="btn-act btn-pour" type="button">
+              <span>🚰</span>
+              <span>Налити</span>
+            </button>
+            <button id="btn-cheers" class="btn-act btn-cheers" type="button">
+              <span>🍻</span>
+              <span>Цокнемось!</span>
+            </button>
+            <button id="btn-chug" class="btn-act btn-chug" type="button">
+              <span>⚡</span>
+              <span>До дна!</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Birthday Perks Wheel -->
+        <div class="perk-box">
+          <div class="perk-header">
+            <span class="perk-tag">🎰 БОНУСНЕ КОЛЕСО ІМЕННИКА:</span>
+            <button id="btn-spin-perk" class="btn-perk-spin" type="button">ЩЕ ↻</button>
+          </div>
+          <div id="perk-text" class="perk-text">
+            "Безлімітний келих крижаного крафтового пива за рахунок Пана Богдана."
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==============================================
+           BACK FACE: POSTCARD FROM MR. BOGDAN
+           ============================================== -->
+      <section class="card-face face-back">
+        
+        <!-- Postcard Stamp Header -->
+        <div class="back-header">
+          <div>
+            <div class="back-title">ОФІЦІЙНА ДЕПЕША</div>
+            <div class="back-sub">АВІАПОШТА • ЧОЛОВІЧИЙ ВІДДІЛ</div>
+          </div>
+
+          <div class="postage-stamp">
+            <span class="stamp-label">100% СОЛОД</span>
+            <span style="font-size: 22px;">🍺</span>
+            <span class="stamp-label" style="color: #4b2d17;">ПРЕМІУМ</span>
+          </div>
+        </div>
+
+        <!-- Postcard Body -->
+        <div class="back-body">
+          <div>
+            <label class="field-label" for="custom-text">Твоє привітання:</label>
+            <textarea id="custom-text" class="message-area">З Днем народження, братухо! Ще на один рік досвідченіший, міцніший і точно спрагліший до нових перемог. Перший келих за мною при першій же зустрічі. Будь завжди на висоті!</textarea>
+          </div>
+
+          <div>
+            <label class="field-label">Швидкі тости:</label>
+            <div class="quick-tags">
+              <button type="button" class="tag-btn" data-quote="Витриманий до ідеалу, як бочковий портер! Міцного здоров'я та залізних нервів. Будь щасливий!">Витриманий портер 🍻</button>
+              <button type="button" class="tag-btn" data-quote="Нехай шашлик ніколи не пригорає, бензобак завжди повний, а пиво в холодильнику — крижане!">Майстер BBQ 🥩</button>
+              <button type="button" class="tag-btn" data-quote="Єдиному мужику, який полагодить усе парою стяжок і вкладеться у будь-який дедлайн!">Золоті руки 🔧</button>
+            </div>
+          </div>
+
+          <div class="names-row">
+            <div>
+              <label class="field-label" for="input-recipient">Кому:</label>
+              <input id="input-recipient" class="name-input" type="text" value="БРАТУХА">
+            </div>
+            <div>
+              <label class="field-label" for="input-sender">Від кого:</label>
+              <input id="input-sender" class="name-input" type="text" value="ПАН БОГДАН">
+            </div>
+          </div>
+        </div>
+
+        <!-- Postcard Footer -->
+        <div class="back-footer">
+          <button id="btn-return" class="btn-back-turn" type="button">
+            <span>↺</span>
+            <span>До кухля</span>
+          </button>
+          <div style="font-size: 11px; font-weight: 700; color: #5c3b24;">
+            🍺 Чоловічий кодекс
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Pop-up -->
+  <div id="toast" class="toast-popup">
+    Повний під вінця! Не розливай рідке золото дарма!
+  </div>
+
+  <script>
+    // State
+    let beerLevel = 48; // in percentage
+    let isPouring = false;
+    let pourTimer = null;
+    let isCardFlipped = false;
+
+    // Elements
+    const cardFlipper = document.getElementById('card-flipper');
+    const toggleFlipBtn = document.getElementById('toggle-flip-btn');
+    const flipBtnText = document.getElementById('flip-btn-text');
+    const btnReturn = document.getElementById('btn-return');
+
+    const tapHandle = document.getElementById('tap-handle');
+    const beerStream = document.getElementById('beer-stream');
+    const beerLiquid = document.getElementById('beer-liquid');
+    const foamHead = document.getElementById('foam-head');
+    const mainMug = document.getElementById('main-mug');
+    const toastMug = document.getElementById('toast-mug');
+
+    const btnPour = document.getElementById('btn-pour');
+    const btnCheers = document.getElementById('btn-cheers');
+    const btnChug = document.getElementById('btn-chug');
+
+    const inputRecipient = document.getElementById('input-recipient');
+    const recipientTitleDisplay = document.getElementById('recipient-title-display');
+    const toastEl = document.getElementById('toast');
+
+    // Toast Notice Helper
+    let toastTimeout = null;
+    function showToast(msg) {
+      toastEl.innerText = msg;
+      toastEl.classList.add('visible');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastEl.classList.remove('visible');
+      }, 2400);
+    }
+
+    // Dynamic Beer Level
+    function renderBeer() {
+      beerLiquid.style.height = `${beerLevel}%`;
+      const foamHeight = beerLevel > 75 ? 30 : (beerLevel > 25 ? 24 : 14);
+      foamHead.style.height = `${foamHeight}px`;
+    }
+
+    // Start / Stop Pouring
+    function startPour(e) {
+      if (e && e.cancelable) e.preventDefault();
+      if (isPouring) return;
+
+      if (beerLevel >= 82) {
+        showToast("Куди ти лиєш?! Не розливай рідке золото дарма! 🍺🚫");
+        mainMug.style.transform = 'translateY(-5px) rotate(-2deg)';
+        setTimeout(() => { mainMug.style.transform = 'translateY(0) rotate(0deg)'; }, 200);
+        return;
+      }
+
+      isPouring = true;
+      tapHandle.classList.add('is-pulled');
+      beerStream.style.opacity = '1';
+
+      pourTimer = setInterval(() => {
+        if (beerLevel < 82) {
+          beerLevel += 2.5;
+          renderBeer();
+          if (Math.random() > 0.6) {
+            triggerSplash(splashCanvas.width * 0.48, splashCanvas.height * 0.38, 2);
+          }
+        } else {
+          beerLevel = 82;
+          renderBeer();
+          showToast("Повний під вінця! Не розливай рідке золото дарма — час цокатися! 🍻");
+          stopPour();
+        }
+      }, 70);
+    }
+
+    function stopPour() {
+      if (!isPouring) return;
+      isPouring = false;
+      tapHandle.classList.remove('is-pulled');
+      beerStream.style.opacity = '0';
+      clearInterval(pourTimer);
+    }
+
+    // Event Bindings for Pouring (Touch + Mouse)
+    tapHandle.addEventListener('touchstart', startPour, { passive: false });
+    window.addEventListener('touchend', stopPour);
+    window.addEventListener('touchcancel', stopPour);
+    tapHandle.addEventListener('mousedown', startPour);
+    window.addEventListener('mouseup', stopPour);
+
+    btnPour.addEventListener('touchstart', startPour, { passive: false });
+    btnPour.addEventListener('touchend', stopPour);
+    btnPour.addEventListener('mousedown', startPour);
+    btnPour.addEventListener('mouseup', stopPour);
+
+    // Chug
+    btnChug.addEventListener('click', () => {
+      beerLevel = 8;
+      renderBeer();
+      mainMug.style.transform = 'translateY(-8px) rotate(5deg)';
+      setTimeout(() => { mainMug.style.transform = 'translateY(0) rotate(0deg)'; }, 300);
+      showToast("Випито до дна! Затисни кран, щоб налити ще! 🍺");
+    });
+
+    // Cheers / Clink Animation
+    btnCheers.addEventListener('click', () => {
+      toastMug.style.opacity = '1';
+      toastMug.style.transform = 'translateX(-105px) rotate(-14deg)';
+      mainMug.style.transform = 'rotate(8deg) scale(1.02)';
+
+      setTimeout(() => {
+        mainMug.style.transform = 'rotate(-2deg) scale(0.98)';
+        toastMug.style.transform = 'translateX(-95px) rotate(-10deg)';
+        triggerSplash(splashCanvas.width * 0.58, splashCanvas.height * 0.32, 40);
+      }, 150);
+
+      setTimeout(() => {
+        toastMug.style.transform = 'translateX(20px) rotate(8deg)';
+        toastMug.style.opacity = '0';
+        mainMug.style.transform = 'rotate(0deg) scale(1)';
+      }, 850);
+
+      showToast("ДЗЕНЬК! Будьмо! За твоє міцне здоров'я! 🍻");
+    });
+
+    // Flip logic
+    function setFlipped(flipped) {
+      isCardFlipped = flipped;
+      if (flipped) {
+        cardFlipper.classList.add('is-flipped');
+        flipBtnText.innerText = 'ЛИЦЬОВИЙ БІК';
+      } else {
+        cardFlipper.classList.remove('is-flipped');
+        flipBtnText.innerText = 'ЗВОРОТНИЙ БІК';
+      }
+    }
+
+    toggleFlipBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      setFlipped(!isCardFlipped);
+    });
+
+    btnReturn.addEventListener('click', (e) => {
+      e.preventDefault();
+      setFlipped(false);
+    });
+
+    // Recipient dynamic input
+    inputRecipient.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      recipientTitleDisplay.innerText = val ? val.toUpperCase() : 'ЛЕГЕНДО';
+    });
+
+    // Quick Quote Templates
+    const customText = document.getElementById('custom-text');
+    document.querySelectorAll('.tag-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        customText.value = btn.dataset.quote;
+        showToast("Привітання оновлено! ✍️");
+      });
+    });
+
+    // Perks Wheel
+    const perks = [
+      "Безлімітний келих крижаного крафтового пива за рахунок Пана Богдана.",
+      "Офіційний імунітет від будь-якого прибирання та хатніх справ на наступні 24 години.",
+      "Повне право вето над пультом від телевізора та музикою в авто на всі вихідні.",
+      "Перший і найбільш соковитий шматок стейка або шашлика за будь-яким столом.",
+      "Законне право на безтурботний 2-годинний сон у гаражі або на дивані.",
+      "Необмежене право критикувати футбол та вигравати будь-які суперечки до опівночі.",
+      "Повний захист від дзвінків по роботі на цілий день."
+    ];
+
+    const perkText = document.getElementById('perk-text');
+    const btnSpinPerk = document.getElementById('btn-spin-perk');
+
+    btnSpinPerk.addEventListener('click', () => {
+      perkText.style.opacity = '0.3';
+      setTimeout(() => {
+        const item = perks[Math.floor(Math.random() * perks.length)];
+        perkText.innerText = `"${item}"`;
+        perkText.style.opacity = '1';
+      }, 150);
+    });
+
+    // Carbonation Bubbles Canvas
+    const bubbleCanvas = document.getElementById('bubble-canvas');
+    const bCtx = bubbleCanvas.getContext('2d');
+    let bubbles = [];
+
+    function setupBubbleCanvas() {
+      bubbleCanvas.width = bubbleCanvas.clientWidth || 120;
+      bubbleCanvas.height = bubbleCanvas.clientHeight || 90;
+      bubbles = [];
+      const count = Math.floor(bubbleCanvas.width / 4);
+      for (let i = 0; i < count; i++) {
+        bubbles.push({
+          x: Math.random() * bubbleCanvas.width,
+          y: Math.random() * bubbleCanvas.height,
+          radius: 1 + Math.random() * 1.6,
+          speed: 0.6 + Math.random() * 1.1,
+          wobble: Math.random() * Math.PI * 2,
+          opacity: 0.25 + Math.random() * 0.5
+        });
+      }
+    }
+
+    function renderBubbles() {
+      bCtx.clearRect(0, 0, bubbleCanvas.width, bubbleCanvas.height);
+      for (const b of bubbles) {
+        b.y -= b.speed;
+        b.wobble += 0.05;
+        b.x += Math.sin(b.wobble) * 0.25;
+        if (b.y < -4) {
+          b.y = bubbleCanvas.height + 4;
+          b.x = Math.random() * bubbleCanvas.width;
+        }
+        bCtx.beginPath();
+        bCtx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+        bCtx.fillStyle = `rgba(255, 255, 230, ${b.opacity})`;
+        bCtx.fill();
+      }
+      requestAnimationFrame(renderBubbles);
+    }
+
+    // Splash Droplets Canvas
+    const splashCanvas = document.getElementById('splash-canvas');
+    const sCtx = splashCanvas.getContext('2d');
+    let splashParticles = [];
+
+    function setupSplashCanvas() {
+      splashCanvas.width = splashCanvas.clientWidth || 260;
+      splashCanvas.height = splashCanvas.clientHeight || 230;
+    }
+
+    function triggerSplash(ox, oy, count = 25) {
+      for (let i = 0; i < count; i++) {
+        const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.6;
+        const speed = 2.5 + Math.random() * 5.5;
+        splashParticles.push({
+          x: ox,
+          y: oy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          r: 1.5 + Math.random() * 2.5,
+          alpha: 1,
+          gravity: 0.2,
+          color: Math.random() > 0.4 ? '#fbbf24' : '#ffffff'
+        });
+      }
+    }
+
+    function renderSplash() {
+      sCtx.clearRect(0, 0, splashCanvas.width, splashCanvas.height);
+      for (let i = splashParticles.length - 1; i >= 0; i--) {
+        const p = splashParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.alpha -= 0.035;
+
+        sCtx.save();
+        sCtx.globalAlpha = Math.max(0, p.alpha);
+        sCtx.beginPath();
+        sCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        sCtx.fillStyle = p.color;
+        sCtx.fill();
+        sCtx.restore();
+
+        if (p.alpha <= 0) {
+          splashParticles.splice(i, 1);
+        }
+      }
+      requestAnimationFrame(renderSplash);
+    }
+
+    // Init
+    window.addEventListener('load', () => {
+      setupBubbleCanvas();
+      setupSplashCanvas();
+      renderBubbles();
+      renderSplash();
+      renderBeer();
+    });
+
+    window.addEventListener('resize', () => {
+      setupBubbleCanvas();
+      setupSplashCanvas();
+    });
+  </script>
+</body>
+</html>
